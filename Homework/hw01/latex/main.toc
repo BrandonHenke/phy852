@@ -1,2 +1,0 @@
-\selectlanguage *{english}
-\contentsline {section}{\numberline {I}Sakurai 4.4}{2}{section.1}%

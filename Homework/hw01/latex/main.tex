@@ -17,7 +17,7 @@ twoside,
 
 \geometry{ % Set document margins
 	top			= 1cm,
-	bottom	= 2cm,
+	bottom		= 2cm,
 	left		= 1cm,
 	right		= 1cm
 }
@@ -43,19 +43,90 @@ twoside,
 
 \section{Sakurai 4.4}
 \subsection{}
+\begin{align}
+	\mathcal{Y}_{0}^{1/2,1/2} &= \begin{pmatrix}
+		Y_0^0 \\ 0
+	\end{pmatrix},\\
+	&= \frac{1}{\sqrt{4\pi}} \begin{pmatrix}
+		1 \\ 0
+	\end{pmatrix}.
+\end{align}
 \subsection{}
+\begin{align}
+	(\bm{\sigma}\vdot\vb{x})\mathcal{Y}_{0}^{1/2,1/2} &= \frac{r}{\sqrt{4\pi}}\begin{pmatrix}
+		\cos\theta \\ e^{i\phi}\sin\theta
+	\end{pmatrix},\\
+	&= \frac{r}{\sqrt{3}}\begin{pmatrix}
+		Y_1^0 \\ -\sqrt{2}Y_1^1
+	\end{pmatrix},\\
+	&= -r \mathcal{Y}_{1}^{1/2,1/2}.
+\end{align}
+Here, $j$ and $m$ remained the same, but $l$ increased from $0$ to $1$.
+
 \subsection{}
+Since $\vb{S}\vdot\vb{x}$ is a scalar under rotations, it can only connect states with $j' = j$ and $m'=m$ (Wigner-Ekhart Theorem).
+However, the operator connects states of opposite parity.
+This is done by changing $l$ by one unit.
+
 \section{Sakurai 4.5}
+The symmetry of $V$ is determined by $\vb{S}\vdot\vb{p}$, which is a pseudoscalar.
+Therefore the matrix element $C_{n'l'j'm'}$ is zero unless $j'=j$, $m'=m$, and $l'=l\pm 1$.
+The radial wave functions go as $r^l$, so, since $V(\vb{x})\propto \delta^{3}(\vb{x})$, the matrix element will only be nonzero for states with $l=0$.
+Consequently, this interaction only connects $S_{1/2}$ and $P_{1/2}$ states.
+
 \section{Sakurai 4.7}
 \subsection{}
+\begin{align}
+	\psi_{p}(x,t) &= e^{i(p \cdot x - Et)/\hbar}.\\
+	\psi_{p}^*(x,-t) &= e^{-i(p \cdot x + Et)/\hbar},\\
+	&= e^{i(-p \cdot x - Et)/\hbar},\\
+	&= \psi_{-p}(x,t). \qquad \checkmark
+\end{align}
+
 \subsection{}
+\subsubsection*{Option 1}
+\begin{align}
+	\chi_+(n) &= \begin{pmatrix}
+			e^{-i\phi/2}\cos\frac{\theta}{2}\\
+			e^{i\phi/2}\sin\frac{\theta}{2}
+		\end{pmatrix}.\\
+	i\sigma_2\chi_+^*(n) &= \begin{pmatrix}
+			0 & -1\\ 1 & 0
+		\end{pmatrix}\begin{pmatrix}
+			e^{i\phi/2}\cos\frac{\theta}{2}\\
+			e^{-i\phi/2}\sin\frac{\theta}{2}
+		\end{pmatrix},\\
+		&= \begin{pmatrix}
+			-e^{-i\phi/2}\sin\frac{\theta}{2}\\
+			e^{i\phi/2}\cos\frac{\theta}{2}
+		\end{pmatrix}.\qquad \checkmark
+\end{align}
+
+\subsubsection*{Option 2}
+\begin{align}
+	\chi(n) &= e^{-i\sigma_3\phi/2}e^{-i\sigma_2\theta/2}.\\
+	-i\sigma_2 \chi^*(n) &= -i\sigma_2 e^{i\sigma_2\theta/2}e^{i\sigma_3\phi/2},\\
+	&= e^{-i\sigma_2\pi/2}e^{i\sigma_2\theta/2}e^{i\sigma_3\phi/2}. \qquad \checkmark
+\end{align}
+
+
 \section{Sakurai 4.11}
-
-
-
-\printbib
-
-
+\begin{align}
+	\ev*{\vu{L}} &= \ev*{\vu{L}}{E},\\
+	&= \ev*{\hat{\Theta}\vu{L}\hat{\Theta}^{-1}}{\tilde{E}},\\
+	&= -\ev*{\vu{L}}{\tilde{E}},\\
+	&= -\ev*{\vu{L}}{E}.\\
+	\therefore \ev*{\vu{L}} &= 0.
+\end{align}
+\begin{align}
+	\ip*{\vb{x},\tilde{E}} &= e^{-i\delta}\ip*{\vb{x},E},\\
+	&= e^{-i\delta} \sum_{lm} F_{lm}(r)Y_l^m(\theta,\phi).\\
+	\ip*{\vb{x},\tilde{E}} &= \ip*{E}{\vb{x}},\\
+	&= \sum_{lm} F_{lm}^*(r)(Y_l^m)^*(\theta,\phi),\\
+	&= \sum_{lm} F_{l,-m}^*(r)(-1)^{-m}Y_l^{-m}(\theta,\phi),\\
+	\therefore F_{lm}(r) &= (-1)^m e^{-i\delta} F_{l,-m}^*(r).
+\end{align}
+% \printbib
 \stopmcols
 
 \end{document}
