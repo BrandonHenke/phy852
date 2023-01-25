@@ -1,0 +1,76 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEX
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf
+\maketitle
+\startmcols
+
+\section{Sakurai 5.1}
+\begin{align}
+	H_0 &= \frac{\hat{p}^2}{2m} + \frac{1}{2}\omega^2m^2\hat{x}^2,\\
+	H &= H_0 + b\hat{x}.\\
+	\Delta_0 &= \mel*{0^{(0)}}{b\hat{x}}{0^{(0)}} + \sum_{k \neq 0} \frac{2b^2 \abs{\mel*{1}{x}{0}}^2}{\hbar\omega - (2k+1)\hbar\omega},\\
+	&= 0 + \sum_{k \neq 0} \frac{\hbar}{2m\omega}\frac{2b^2 \abs{\ip{k}{1}}^2}{\hbar\omega - (2k+1)\hbar\omega},\\
+	&= \frac{\hbar}{2m\omega}\frac{2b^2}{-2\hbar\omega},\\
+	&= -\frac{b^2}{2m\omega^2}
+\end{align}
+\begin{align}
+	V(x) &\rightarrow \frac{1}{2}m \omega^2\left(x+\frac{b}{m\omega^2}\right)^2-\frac{b^2}{2m\omega^2}.\\
+	x' &= x+\frac{b}{m\omega^2},\\
+	H &= \frac{\hat{p}^2}{2m} + \frac{1}{2}\omega^2m^2\hat{x}'^2-\frac{b^2}{2m\omega^2}.
+\end{align}
+This is a simple harmonic oscillator with an energy shift of $-\frac{b^2}{2m\omega^2}$, so the perturbation theory result gives the exact energy shift.
+\section{Sakurai 5.7}
+\subsection{}
+The energy for the 2D Simple Harmonic Oscillator are
+\begin{equation}
+	E_{n_x,n_y} = \hbar\omega\left(n_x+n_y+1\right).
+\end{equation}
+Hence, the three lowest lying states have energies of $E \in \{ \hbar\omega, 2\hbar\omega, 2\hbar\omega \}$.
+The degeneracy for each energy level, $n = n_x+n_y$, is ${{n+1}\choose{1}} = n+1$.
+\subsection{}
+\subsection{}
+\section{Second Order Ground State Correction}
+\section{Sakurai 5.16}
+
+
+% \printbib
+\stopmcols
+
+\end{document}
