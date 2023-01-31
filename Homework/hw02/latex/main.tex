@@ -136,8 +136,33 @@ The second order correction to the ground state of the perturbation $V = \delta 
 This agrees with the second term in the taylor expansion of the energy for the exact ground state found in \ref{sec: II}-\ref{subsec: IIc}.
 
 \section{Sakurai 5.16}\label{sec: IV}
+\begin{align}
+	H_0 &= \frac{\hat{p}^2}{2m} - \frac{e^2}{r},\\
+	H &= H_0 + V(r),\\
+	V(r) &= \left\{
+		\begin{array}{rl}
+			e^2\left(\frac{1}{r}+\frac{r^2}{2R^3} - \frac{3}{2R}\right) & r \leq R \\
+			0 & r \geq R
+		\end{array}
+	\right..
+\end{align}
+\begin{align}
+	\Delta_{nl}^{(1)} &= \mel*{nlm}{V}{nlm},\\
+	&= \int_0^R r^2\dd{r} R_{nl}(r) V(r) R_{nl}(r).
+\end{align}
+\begin{align}
+	R_{10}(r) &= 2\left(\frac{1}{a_0}\right)^{3/2} e^{-r/a_0},\\
+	R_{20}(r) &= \frac{1}{\sqrt{3}}\left(\frac{1}{2a_0}\right)^{3/2}\left(1-\frac{r}{2a_0}\right) e^{-r/2a_0},\\
+	R_{21}(r) &= \frac{1}{\sqrt{3}}\left(\frac{1}{2a_0}\right)^{3/2}\left(\frac{r}{a_0}\right) e^{-r/2a_0}.
+\end{align}
+Using Mathematica to evaluate the integrals gives
+\begin{align}
+	\Delta_{10}^{(1)} &= \frac{2}{5} \frac{e^2}{a_0}\left(\frac{R}{a_0}\right)^2,\\
+	\Delta_{20}^{(1)} &= \frac{1}{20} \frac{e^2}{a_0}\left(\frac{R}{a_0}\right)^2,\\
+	\Delta_{21}^{(1)} &= \frac{1}{1120} \frac{e^2}{a_0}\left(\frac{R}{a_0}\right)^4.
+\end{align}
 
-
+The wavefunction goes as $r^l$ for $r\rightarrow 0$, so only states with $l=0$ have a significant overlap with the proton.
 
 % \printbib
 \stopmcols
