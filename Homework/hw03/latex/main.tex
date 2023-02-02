@@ -43,8 +43,32 @@ twoside,
 
 \section{Perturbative Hydrogen Fine Structure}\label{sec: I}
 \subsection{}\label{ssec: Ia}
+\begin{align}
+	\Delta_{l}^{(1)} &= \mel*{nlm}{H_D'}{nlm},\\
+	&= \int \dd[3]{r} \frac{\pi\hbar^3\alpha}{2m^2c} \delta^{(3)}(\vb{r}) \abs{\Psi_{nl}^{m}(\vb{r})}^2,\\
+	&= \frac{\pi\hbar^3\alpha}{2m^2c} \abs{\Psi_{nl}^{m}(\vb{0})}^2,\\
+	&= 0, \qquad \text{when $l\neq 0$}.
+\end{align}
+
 \subsection{}\label{ssec: Ib}
+
+\begin{align}
+	\Delta_{0}^{(1)} &= \mel*{n00}{H_D'}{n00},\\
+	&= \frac{\pi\hbar^3\alpha}{2m^2c} \abs{\Psi_{n0}^{0}(\vb{0})}^2,\\
+	&= \frac{\pi\hbar^3\alpha}{2m^2c} \abs{R_{n0}(0)\mathcal{Y}_0^{0}(\phi,\theta)}^2,\\
+	&= \frac{\pi\hbar^3\alpha}{2m^2c} \frac{1}{4\pi}\abs{\frac{2}{n a_0^{3/2}}}^2,\\
+	&= \frac{\pi\hbar^3\alpha}{2m^2c} \frac{1}{4\pi}\frac{4}{n^2 a_0^3},\\
+	&= \frac{\alpha^4 mc^2}{2n^3}. \qquad (a_0 = \tfrac{\hbar}{mc\alpha}).
+\end{align}
+
 \subsection{}\label{ssec: Ic}
+\begin{align}
+	E_{FS}^{(1)} &= E_{K}^{(1)} + \Delta_{0}^{(1)},\\
+	&= E_n^{(0)}\alpha^2\left(\frac{1}{n(l+1/2)}-\frac{3}{4n^2}\right) + \frac{\alpha^4 mc^2}{2n^3},\\
+	&\quad E_n^{(0)}=-\frac{1}{2}mc^2 \frac{\alpha^2}{n^2}.\\
+	&= E_n^{(0)}\alpha^2\left(\frac{1}{n}-\frac{3}{4n^2}\right).\\
+	E_{n0,j=1/2}^{(1)} &= E_n^{(0)}\alpha^2\left(\frac{1}{n}-\frac{3}{4n^2}\right). \qquad \checkmark
+\end{align}
 
 \section{Sakurai 5.6}\label{sec: II}
 The energy eigenstates of the infinite square well in two dimensions are:
