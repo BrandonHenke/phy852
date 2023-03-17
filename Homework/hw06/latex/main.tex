@@ -1,0 +1,98 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEX
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf{Problem Set 6}
+\maketitle
+\startmcols
+
+\section{Electric Dipole Approximation}\label{sec: I}
+
+
+\subsection{}\label{ssec: IA}
+
+\begin{align}
+	\omega &= ck,\\
+	\hbar \omega &= \frac{e^2}{a_0},\\
+	\hbar k &= \frac{e^2}{c a_0},\\
+	\alpha &\equiv \frac{\hbar k}{p},\\
+	p = \frac{\hbar}{a_0} \rightarrow  \frac{\hbar k}{p} &= \frac{e^2}{\hbar c} \ll 1.
+\end{align}
+
+\subsection{}\label{ssec: IB}
+
+\begin{align}
+	\frac{mc}{e}\frac{\bm{\mu} \vdot \vb{B}}{\vb{A} \vdot \vb{p}}
+	&= \frac{mc}{e} \frac{\bm{\mu} \vdot \vb{B}}{A_0 \hbar/a_0}.\\
+	\vb{B}
+	&= \curl{\vb{A}},\\
+	&= i \vb{k} \times \vb{A},\\
+	\therefore B
+	&= k A_0.\\
+	\frac{mc}{e}\frac{\bm{\mu} \vdot \vb{B}}{\vb{A} \vdot \vb{p}}
+	&= \frac{mc}{e} \frac{\frac{e\hbar}{mc} kA_0}{A_0 \frac{\hbar}{a_0}},\\
+	&= ka_0 = \alpha \ll 1.
+\end{align}
+
+\section{Hydrogen Decay Rate and Life Time}\label{sec: II}
+
+
+\section{Sakurai 5.47}\label{sec: III}
+
+\begin{align}
+	\mel*{\vb{k}_f}{e^{i(\omega/c)\vu{n}\vdot\vb{r}}\bm{\hat{\epsilon}}\vdot\vb{p}}{i}
+	&= \bm{\hat{\epsilon}} \vdot \int \dd[3]{r} \ip*{\vb{k}_f}{\vb{r}} e^{i(\omega/c)\vu{n}\vdot\vb{r}} \mel*{\vb{r}}{\vb{p}}{i},\\
+	&= -i\hbar\bm{\hat{\epsilon}} \vdot \int \dd[3]{r} \frac{e^{-i\vb{k}_f\vdot\vb{r}}}{L^{3/2}}e^{i(\omega/c)\vu{n}\vdot\vb{r}} \grad{\psi(\vb{r})},\\
+	&= i\hbar(\bm{\hat{\epsilon}}\vdot\vb{k}_f)\frac{1}{L^{3/2}}\left(\frac{m\omega_0}{\pi\hbar}\right)^{3/4}\nonumber\\
+	&\qquad\times \int \dd[3]{r} e^{-i \vb{q}\vdot\vb{r}}e^{m\omega_0 r^2/2\hbar},
+\end{align}
+where $\vb{q} \equiv \vb{k}_f - (\omega/c) \vu{n}$.
+Therefore
+\begin{align}
+	\dv{\sigma}{\Omega}
+	&= \frac{4\alpha\hbar^2}{m\omega\omega_0} k_f (\bm{\hat{\epsilon}}\vdot\vb{k}_f)^2 \left(\frac{\pi\hbar}{m\omega_0}\right)^{1/2} e^{-\frac{\hbar q^2}{m\omega_0}},\\
+	&= \frac{4\alpha\hbar^2k_f^2}{m^2\omega\omega_0}\sin^2\theta\cos^2\phi\left(\frac{\pi\hbar}{m\omega_0}\right)^{1/2}\nonumber\\
+	&\qquad\times \exp(-\frac{\hbar}{m\omega_0} \left(k_f^2-(\omega/c)^2\right))\nonumber\\
+	&\qquad\times \exp(2\hbar k_f \frac{\omega}{mc\omega_0}\cos\theta).
+\end{align}
+
+
+% \printbib
+\stopmcols
+
+\end{document}

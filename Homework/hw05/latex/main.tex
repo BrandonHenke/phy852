@@ -1,0 +1,94 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEX
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf
+\maketitle
+\startmcols
+
+\section{Deuterium Hyperfine Transition}\label{sec: I}
+\section{Time-dependent Electric Field}\label{sec: II}
+
+
+
+\section{Sakurai 5.29}\label{sec: III}
+
+
+\begin{align}
+	c_0^{(0)} &= 1.\\
+	%
+	c_n^{(1)}
+	&= -\frac{i}{\hbar} \int_0^t e^{i(E-E_0)t'/\hbar} \mel*{n}{F_0x\cos\omega t'}{0} \dd{t'},\\
+	&= -\frac{i}{\hbar} F_0 \sqrt{\frac{\hbar}{2m\omega_0}}\delta_{n1} \int_0^t e^{-i\omega_0 t'} \cos\omega t' \dd{t'}.\\
+	%
+	c_1^{(1)}
+	&= -\frac{i}{\hbar} F_0 \sqrt{\frac{\hbar}{2m\omega_0}} \int_0^t e^{-i\omega_0 t'} \cos\omega t' \dd{t'},\\
+	&= -\frac{i}{2\hbar} F_0 \sqrt{\frac{\hbar}{2m\omega_0}}\nonumber\\
+	 &\qquad \times \left( \frac{e^{i(\omega_0+\omega)t}-1}{\omega_0+\omega} + \frac{e^{i(\omega_0-\omega)t}-1}{\omega_0-\omega} \right) \equiv c_1(t).
+\end{align}
+\begin{align}
+	\ev{\hat{x}} &= \ev*{\hat{x}}{\alpha,t}_S,\\
+	&= \left(e^{i\omega_0 t/2}\bra{0} -c_1^*e^{3i\omega_0 t/2}\bra{1}\right)\hat{x}\\
+	 &\qquad\times\left(e^{-i\omega_0 t/2}\ket{0} - c_1e^{-3i\omega_0 t/2}\ket{1}\right),\\
+	&= \sqrt{\frac{\hbar}{2m\omega_0}} \left( c_1e^{-i\omega_0 t} + c_1^*e^{i\omega_0 t}\right),\\
+	&= -\frac{F_0}{m} \frac{\cos\omega t - \cos\omega_0 t}{\omega_0^2 - \omega^2}.
+\end{align}
+This does not work at resonance, $\omega = \omega_0$, since it tends towards infinity.
+It must be modified from the start for that case.
+
+
+\section{Sakurai 5.33}\label{sec: IV}
+
+
+\begin{align}
+	F(t) &= \frac{F_0 \tau/\omega}{\tau^2+t^2}, \qquad t \in (-\infty,\infty).\\
+	\therefore V(t) &= -F(t)x.
+\end{align}
+\begin{align}
+	c_1^{(1)}(\infty)
+	&= \frac{i}{\hbar} \frac{F_0 \tau}{\omega} \mel*{1}{\hat{x}}{0}\int_{-\infty}^\infty \frac{e^{i\omega t}}{\tau^2+t^2} \dd{t},\\
+	&= \frac{i}{\hbar} \frac{F_0 \tau}{\omega} \sqrt{\frac{\hbar}{2m\omega}} \frac{\pi}{\tau}e^{-\omega \tau}.
+\end{align}
+This makes sense in the limit $\tau \gg 1/\omega$.
+The perturbation is essentially turned on then off very slowly, so the system stays in the ground state.
+
+
+% \printbib
+\stopmcols
+
+\end{document}
