@@ -1,0 +1,78 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEX
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf{Midterm 2 Practice}
+\maketitle
+% \startmcols
+
+\section{Perturbation Theory: Hydrogen}\label{sec: I}
+\subsection{}\label{ssec: Ia}
+
+From \ref{sec: I}.\ref{ssec: Ib},
+\begin{align}
+	E_0^{(0)} &= -\frac{1}{2}mc^2\alpha^2,\\
+	E_0^{(1)} &= \frac{2}{3a}mc^2\alpha^2\lambda\left(\frac{3a}{2Z}\right), \qquad (Z=1),\\
+	E_0^{(0)}+E_0^{(1)} &= mc^2\alpha^2\lambda\left(\lambda-\frac{1}{2}\right).
+\end{align}
+
+\subsection{}\label{ssec: Ib}
+
+\begin{align}
+	\ev*{H}{\psi} &= \frac{1}{2m} \left(m^2c^2\alpha^2 Z^2\right) - \hbar c \alpha \left(\frac{mc\alpha Z}{\hbar}\right) + \frac{2}{3a} mc^2\alpha^2\lambda \left(\frac{3a}{2Z}\right),\\
+	&= mc^2\alpha^2 \left(\frac{Z^2}{2} - Z + \frac{1}{Z}\right).
+\end{align}
+
+\subsection{}\label{ssec: Ic}
+
+\begin{align}
+	\partial_Z \ev*{H}{\psi} = 0 &= mc^2\alpha^2 \left(Z - 1 - \frac{\lambda}{Z^2}\right),\\
+	0 &= Z - 1 - \frac{\lambda}{Z^2}.
+\end{align}
+
+\section{Hydrogen Stark Interaction}\label{sec: II}
+\subsection{}\label{ssec: IIa}
+\subsection{}\label{ssec: IIb}
+\subsection{}\label{ssec: IIc}
+\subsection{}\label{ssec: IId}
+\subsection{}\label{ssec: IIe}
+
+% \printbib
+% \stopmcols
+
+\end{document}
