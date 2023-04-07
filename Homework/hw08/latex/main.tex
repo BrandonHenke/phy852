@@ -1,0 +1,198 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEXMK
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf{Problem Set 8}
+\maketitle
+\startmcols
+
+\section{Carbon Atom}\label{sec: I}
+\subsection{} \label{ssec: IA}
+
+The allowed values for the total angular momentum, added between two angular momenta, are $\{l_1+l_2,l_1+l_2-1,l_1+l_2-2,\dots,\abs{l_1-l_2}\}$.
+Starting with $L$, $l_1 = l_2 = 1$ ($p$ orbital).
+Hence,
+\begin{align}
+	L \in \{2,1,0\}.
+\end{align}
+Next, for the spin, $s_1 = s_2 = 1/2$.
+Therefore,
+\begin{align}
+	S \in \{1,0\}.
+\end{align}
+
+Finding $J$, is a little more complicated.
+Electrons are fermions, so the states they can be in must be antisymmetric.
+Thus, only combinations of $S$ and $L$ where one is symmetric and the other is antisymmetric are allowed.
+The $L = 0$ and $L = 2$ states are symmetric, while the $L = 1$ state is antisymmetric.
+Similarly, the $S = 1$ state is symmetric, while the $S = 0$ state is antisymmetric.
+Hence the following table gives the allowed states
+\begin{align}
+	\begin{array}{ccc}
+		S & L & J\\\hline
+		0 & 2 & 2\\
+		0 & 0 & 0\\
+		1 & 1 & 0,1,2
+	\end{array}\nonumber
+\end{align}
+
+Next, for each allowed value for $J$, there are $2J+1$ states such that their total angular momentum is $J$.
+Therefore, the total number of states allowed is $5 + 1 + 1 + 3 + 5 = 15$ states.
+
+\subsection{} \label{ssec: IB}
+
+In the $2p$ orbital, the allowed values of $m_l$ are $\{-1,0,1\}$, and the allowed values for $m_s$ are $\{-1/2,1/2\}$.
+Hence there are $6$ states for one electron in this orbital.
+If the state of the two electrons is to be antisymmetric, then there are $6$ possible states for the first electron, but only $5$ for the second electron (one can't pick the same state for both).
+However, this double counts since the order of picking states for each electron shouldn't matter.
+Hence the total number of states allowed for the two electron system is $6\cdot 5 /2 = 15$, which agrees with \ref{sec: I}-\ref{ssec: IA}.
+
+
+
+
+
+
+\section{Two-particle Operator}\label{sec: II}
+
+
+\begin{align}
+	\{ab\mid V\mid cd\}
+		&= \frac{1}{2} (\bra{ab}-\bra{ba})V(\ket{cd}-\ket{dc}),\\
+		&= \frac{1}{2} \left(\mel*{ab}{V}{cd}-\mel*{ab}{V}{dc}\right)\nonumber\\
+			&\quad-\frac{1}{2}\left(\mel*{ba}{V}{cd}-\mel*{ba}{V}{dc}\right),\\
+		&= \frac{1}{2} \left(\mel*{ab}{V}{cd}-\mel*{ab}{V}{dc}\right)\nonumber\\
+			&\quad+\frac{1}{2} \left(\mel*{ab}{V}{cd}-\mel*{ab}{V}{dc}\right),\\
+		&= \mel*{ab}{V}{cd}-\mel*{ab}{V}{dc},\\
+		&= \mel*{ab}{V}{cd}-\mel*{ba}{V}{cd}.
+\end{align}
+
+
+\section{Non-interacting Fermions in a 1D Harmonic Oscillator Potential}\label{sec: III}
+\subsection{}\label{ssec: IIIA}
+
+
+\begin{align}
+	\hat{H}
+		&= \sum_{n} \hbar\omega\left(\hat{a}_n^\dagger \hat{a}_n + \frac{1}{2}\right),\\
+	\rightarrow \hat{\mathcal{H}}
+		&= \sum_{kl} \hbar\omega\left(l + \frac{1}{2}\right)\delta_{kl}\hat{a}_k^\dagger \hat{a}_lcols,\\
+		&= \sum_{n} \hbar\omega\left(n + \frac{1}{2}\right)\hat{a}_n^\dagger \hat{a}_n.
+\end{align}
+
+
+\subsection{}\label{ssec: IIIB}
+
+The ground state is the state that is annihilated by $\hat{a}_j$ for $j \in \N$.
+Hence
+\begin{align}
+	\ket{\psi_{gs}} &= \ket{0}.
+\end{align}
+(I'm not really sure what the desired answer to this one is since all sources I've found say that 
+it's just this.)
+
+
+\subsection{}\label{ssec: IIIC}
+
+
+\begin{align}
+	\hat{\psi}(\vb{r}) &= \sum_n \ip*{\vb{r}}{n}\hat{a}_n,\\
+	\hat{\psi}^\dagger(\vb{r}) &= \sum_n \hat{a}_n^\dagger \ip*{n}{\vb{r}}.
+\end{align}
+
+
+\subsection{}\label{ssec: IIID}
+
+
+\begin{align}
+	\rho(\vb{x},\vb{x}')
+		&= \ev{\hat{\psi}^\dagger(\vb{x})\hat{\psi}(\vb{x}')},\\
+		&= \sum_{mn}\ev{\hat{a}_m^\dagger \ip*{m}{\vb{x}}\ip*{\vb{x}'}{n}\hat{a}_n},\\
+		&= \sum_{mn}\ip*{m}{\vb{x}}\ip*{\vb{x}'}{n} \ev{\hat{a}_m^\dagger \hat{a}_n}{k},\\
+		&= \sum_m \ip*{m}{\vb{x}}\ip*{\vb{x}'}{m}.
+\end{align}
+
+
+\section{Second Quantization of Operators}\label{sec: IIII}
+\subsection{}\label{ssec: IIIIA}
+
+
+\begin{align}
+	\hat{\mathcal{K}} &= \sum_{mn}\mel*{l_m}{\hat{K}}{l_n}\hat{b}_{m}^\dagger \hat{b}_{n}.
+	\label{eq: gen_op}
+\end{align}
+\begin{align}
+	&\hat{\rho}(\vb{r}) = \sum_{n}^N \delta(\vb{r}-\hat{\vb{r}}_n),\\
+	\rightarrow &\hat{\varrho}(\vb{r}) = \nonumber\\
+	&\sum_{m_s'm_s''}\iint \dd{\vb{x}'}\dd{\vb{x}''} \mel*{\vb{x}'m_s'}{\delta(\vb{r}-\hat{\vb{r}})}{\vb{x}''m_s''}\hat{\psi}_{m_s'}^\dagger(\vb{x}') \hat{\psi}_{m_s''}(\vb{x}''),\\
+	&= \sum_{m_s'm_s''}\iint \dd{\vb{x}'}\dd{\vb{x}''} \delta(\vb{r}-\vb{x}'')\ip*{\vb{x}'m_s'}{\vb{x}''m_s''}\hat{\psi}_{m_s'}^\dagger(\vb{x}') \hat{\psi}_{m_s''}(\vb{x}''),\\
+	&= \sum_{m_s}\hat{\psi}_{m_s}^\dagger(\vb{r}) \hat{\psi}_{m_s}(\vb{r}).
+\end{align}
+
+
+\subsection{}\label{ssec: IIIIB}
+
+
+In a similar manner to section \ref{sec: IIII}-\ref{ssec: IIIIA},
+\begin{align}
+	&\mel*{\vb{x}'m_s'}{\hat{\vb{p}}\delta(\vb{r}-\hat{\vb{r}})+\delta(\vb{r}-\hat{\vb{r}})\hat{\vb{p}}}{\vb{x}'m_s'}\nonumber\\
+		&\qquad= \mel*{\vb{x}'m_s'}{\hat{\vb{p}}\delta(\vb{r}-\hat{\vb{r}})}{\vb{x}''m_s''}\nonumber\\
+		&\qquad\quad+\mel*{\vb{x}'m_s'}{\delta(\vb{r}-\hat{\vb{r}})\hat{\vb{p}}}{\vb{x}''m_s''},\\
+		&\qquad= \frac{\hbar}{i}\partial_{\vb{x}'}\delta(\vb{r}-\vb{x}'')\ip*{\vb{x}'m_s'}{\vb{x}''m_s''}\nonumber\\
+		&\qquad\quad+ \delta(\vb{r}-\vb{x}'')\frac{\hbar}{i}\partial_{\vb{x}'}\ip*{\vb{x}'m_s'}{\vb{x}''m_s''}
+		\label{eq: 4b_mel}
+\end{align}
+Plugging \ref{eq: 4b_mel} into \ref{eq: gen_op} gives
+\begin{align}
+	\hat{\bm{\mathcal{j}}}(\vb{r}) &= \frac{\hbar}{2im} \sum_{m_s} \hat{\psi}_{m_s}^\dagger(\vb{r})\partial_{\vb{r}}\hat{\psi}_{m_s}(\vb{r}) - \partial_{\vb{r}}\hat{\psi}_{m_s}^\dagger(\vb{r})\hat{\psi}_{m_s}(\vb{r}).
+\end{align}
+
+
+\subsection{}\label{ssec: IIIIC}
+
+
+Again, the proceedure is the same as in the last to parts of this problem.
+Hence, the second quantization spin density operator is give by
+\begin{align}
+	\hat{\bm{\mathcal{S}}}(\vb{r}) &= \sum_{m_s} \frac{\hbar}{2}\sigma_{m_s} \hat{\psi}_{m_s}^\dagger(\vb{r})\hat{\psi}_{m_s}(\vb{r}).
+\end{align}
+
+
+% \printbib
+\stopmcols
+
+\end{document}

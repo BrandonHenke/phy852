@@ -1,0 +1,185 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEXMK
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf{Problem Set 7}
+\maketitle
+\startmcols
+
+\section{Sakurai 7.3}\label{sec: I}
+
+
+\subsection{} \label{ssec: IA}
+
+
+The energy for one harmonic oscillator is
+\begin{align}
+	E_n &= \hbar \omega \left(n+\frac{1}{2}\right),
+\end{align}
+Where $\omega$ is the angular frequency, $\sqrt{k/m}$.
+If one ignores the spin states, of the particles, the fermions cannot occupy the same state.
+Hence, the first particle will be in the ground state ($n=0$), the second particle will be in the first excited state ($n=1$), etc.
+Therefore the total energy is
+\begin{align}
+	E_{tot} &= \sum_{n=0}^{N-1} \hbar\omega\left(n + \frac{1}{2}\right),\\
+	&= \frac{N^2}{2}\hbar\omega.
+\end{align}
+
+However, if one considers the spin state of each particle, then each energy level is doubly degenerate.
+Two particles can occupy the same state, given they have opposing spin states.
+Thus, the total energy in this case is
+\begin{align}
+	E_{tot} &= \sum_{n=0}^{\lfloor(N-1)/2\rfloor} 2\hbar\omega\left(n+\frac{1}{2}\right)-\left\{
+		\begin{array}{rl}
+			0 & N\;\text{even}\\
+			\frac{N}{2} & N\;\text{odd}
+		\end{array}\right.,\\
+	&= \hbar\omega\left(\left\lfloor\frac{N-1}{2}\right\rfloor+1\right)^2-\left\{\begin{array}{rl}
+		0 & N\;\text{even}\\
+		\frac{N}{2} & N\;\text{odd}
+	\end{array}\right.,\\
+	&= \left\{\begin{array}{rl}
+		\frac{N^2}{4}\hbar\omega & N\;\text{even}\\
+		\frac{N^2+1}{4}\hbar\omega & N\;\text{odd}
+	\end{array}\right..
+\end{align}
+
+The Fermi energy is the energy of the highest occupied level.
+Hence, for the case where spin is ignored, it is $\hbar\omega(N-1 + 1/2)$.
+For the case where spin is not ignored, the Fermi energy is
+\begin{align}
+	E_F &= \hbar\omega\left(\left\lfloor \frac{N-1}{2} \right\rfloor + \frac{1}{2}\right)
+\end{align}
+
+\subsection{} \label{ssec: IB}
+
+
+For large $N$, $E_{tot} = N^2\hbar\omega/4$, and $E_F = N\hbar\omega/2$.
+
+
+\section{Sakurai 7.7}\label{sec: II}
+
+
+\subsection{}\label{ssec: IIA}
+
+
+\begin{align}
+	i.\qquad&\nonumber\\
+	\ket{\psi} &= \ket{+}\ket{+}\ket{+},\\
+	ii.\qquad&\nonumber\\
+	\ket{\psi} &= \frac{1}{\sqrt{3}}(\ket{+}\ket{+}\ket{0} + \ket{+}\ket{0}\ket{+} + \ket{0}\ket{+}\ket{+})\\
+	iii.\qquad&\nonumber\\
+	\ket{\psi} &= \frac{1}{\sqrt{6}}(\ket{+}\ket{0}\ket{-} + \ket{+}\ket{0}\ket{-}\nonumber\\
+	&\quad + \ket{0}\ket{+}\ket{-} + \ket{0}\ket{-}\ket{+}\nonumber\\
+	&\quad + \ket{-}\ket{+}\ket{0} + \ket{-}\ket{0}\ket{+})
+\end{align}
+\subsection{}\label{ssec: IIB}
+\begin{align}
+	i.\qquad&\text{Not possible.}\nonumber\\
+	ii.\qquad&\text{Not possible.}\nonumber\\
+	iii.\qquad&\nonumber\\
+	\ket{\psi} &= \frac{1}{\sqrt{6}}(\ket{+}\ket{0}\ket{-} - \ket{+}\ket{0}\ket{-}\nonumber\\
+	&\quad - \ket{0}\ket{+}\ket{-} + \ket{0}\ket{-}\ket{+}\nonumber\\
+	&\quad + \ket{-}\ket{+}\ket{0} - \ket{-}\ket{0}\ket{+})
+\end{align}
+
+
+\section{Sakurai 7.11}\label{sec: III}
+
+
+\subsection{}\label{ssec: IIIA}
+The position wave function in the infinite square well is
+\begin{align}
+	\psi_n(x) = \sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L}),
+\end{align}
+and the energy is given by
+\begin{align}
+	E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}.
+\end{align}
+In the triplet state, the spin state is symmetric, so the position state must be antisymmetric.
+Hence, the ground state is
+\begin{align}
+	\psi(x_1,x_2) = \frac{1}{\sqrt{2}} \left[\psi_1(x_1)\psi_2(x_2)-\psi_1(x_2)\psi_2(x_1)\right]
+\end{align}
+The energy of this state is
+\begin{align}
+	\hat{H}\psi(x_1,x_2) &= \left[\frac{\pi^2\hbar^2}{2mL^2} + \frac{4\pi^2\hbar^2}{2mL^2}\right]\psi(x_1,x_2),\\
+	&= \frac{5\pi^2\hbar^2}{2mL^2}\psi(x_1,x_2).\\
+	\therefore E_{gs} &= \frac{5\pi^2\hbar^2}{2mL^2}.
+\end{align}
+
+
+\subsection{}\label{ssec: IIIB}
+
+
+The singlet state is antisymmetric, so the spatial state must be symmetric.
+Hence the ground state is
+\begin{align}
+	\psi(x_1,x_2) &= \psi_1(x_1)\psi_1(x_2)
+\end{align}
+The energy of this state is
+\begin{align}
+	\hat{H}\psi(x_1,x_2) &= \left[\frac{\pi^2\hbar^2}{2mL^2} + \frac{\pi^2\hbar^2}{2mL^2}\right]\psi(x_1,x_2),\\
+	&= \frac{\pi^2\hbar^2}{mL^2}\psi(x_1,x_2).\\
+	\therefore E_{gs} &= \frac{\pi^2\hbar^2}{mL^2}.
+\end{align}
+
+
+\subsection{}\label{ssec: IIIC}
+
+
+The state is subject to a potential
+\begin{align}
+	V = -\lambda \delta(x_1 - x_2). \qquad (\lambda > 0)
+\end{align}
+For the antisymmetric spatial state, this potential has no effect, because the Pauli exclusion principle doesn't allow for the particles to be at the same position.
+This rules out the triplet state.
+
+For the singlet state, however, the two particles can be in the same position.
+Then, the energy shift is given by
+\begin{align}
+	\Delta E &= \ev{V},\\
+		&= -\lambda \iint\dd{x_1}\dd{x_2} \psi_1^2(x_1)\psi_1^2(x_2)\delta(x_1-x_2),\\
+		&= \int\dd{x} \psi_1^4(x),\\
+		&= -\frac{3\lambda}{2L}.
+\end{align}
+
+% \printbib
+\stopmcols
+
+\end{document}
