@@ -1,0 +1,135 @@
+\documentclass[
+a4paper,
+10pt,
+twoside,
+% prd,
+% aps,
+% nofootinbib,
+% superscriptaddress,
+% floatfix,
+% preprintnumbers,
+]{article}
+
+% MUST BE RUN WITH LUALATEXMK
+
+\usepackage{preamble}
+\usepackage{titleinfo}
+
+\geometry{ % Set document margins
+	top			= 1cm,
+	bottom		= 2cm,
+	left		= 1cm,
+	right		= 1cm
+}
+
+\newcommand{\mcols}{2} % Choose number of columns (>= 1)
+
+
+\bibSetup{refs.bib} % Give references file 
+% ===== Format headers & footers =====
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{B. Henke}
+\fancyhead[LO]{\headertitle\hspace{0.5cm}\textit{PHY852}}
+\fancyhead[RE]{\textit{PHY852}\hspace{0.5cm}\headertitle}
+\fancyfoot[RE,LO]{\thepage}
+
+\begin{document}
+% \tableofcontents
+\titleinf{Problem Set 9}
+\maketitle
+\startmcols
+
+\section{Sakurai 6.3}\label{sec: I}
+
+\begin{align}
+	q &= 2k\sin(\frac{\theta}{2}),\\
+	800\text{MeV} &= \frac{\hbar^2k^2}{2m},\qquad\text{(from figure)}\\
+	k &= 6.11\text{fm}^{-1}.\\
+	qa &= (4.49,7.73,10.9,...),\\
+	\theta &= (7.7,14.25,20.95)^\circ,\\
+	a &= (5.47, 5.10, 4.91)\text{fm}.\\
+	1.4 A^{1/3} &= 4.79\text{fm}.
+\end{align}
+My estimates are a bit large.
+
+\section{Scattering Off of a Spherically-Symmetric Potential}\label{sec: II}
+\subsection{}\label{ssec: IIa}
+
+\begin{align}
+	f
+		&= -\frac{m}{2\pi\hbar^2}\int\dd[3]{x} e^{-i \bm{q}\cdot \bm{x}}V_0 e^{-\frac{r^2}{2a^2}},\\
+		&= -\frac{m V_0}{2\pi\hbar^2}\left(\int\dd{x} e^{-i q_x x}e^{-\frac{x^2}{2a^2}}\right)^3,\\
+		&= -\frac{\sqrt{2\pi} a^3 m V_0}{\hbar^2}  e^{-3a^2 q^2/2}.\\
+	\dv{\sigma}{\Omega}
+		&= \abs{f}^2,\\
+		&= \frac{2\pi a^6 m^2 V_0^2}{\hbar^4} e^{-3a^2 q^2}.
+\end{align}
+
+
+\subsection{}\label{ssec: IIb}
+
+\begin{align}
+	\sigma
+		&= \int \dv{\sigma}{\Omega} \dd{\Omega},\\
+		&= \int_0^{2\pi} \dd{\phi} \int_{-1}^{1} \dv{\sigma}{\Omega} \dd{\cos\theta},\\
+		&= \frac{4\pi^2 a^6 m^2 V_0^2}{\hbar^4} e^{-3a^2} \int_{-1}^{1} e^{q^2} \dd{\cos\theta},\\
+		&= \frac{4\pi^2 a^6 m^2 V_0^2}{\hbar^4} \int_{-1}^{1} e^{-6a^2k^2(1-\cos\theta)} \dd{\cos\theta},\\
+		&= \frac{2\pi^2 a^4 m^2 V_0^2(1 - e^{-12 a^2 k^2})}{3 k^2 \hbar^4}.
+\end{align}
+
+
+\section{Scattering Off of a "Separable Potential"}\label{sec: III}
+\subsection{}\label{ssec: IIIa}
+
+\begin{align}
+	T
+		&= \op{v}(1+\ev{G_0}{v}+\ev{G_0}{v}^2+\dots),\\
+		&= \op{v}\sum_{n=0}^\infty \ev{G_0}{v}^n,\\
+		&= \frac{\op{v}}{1-\ev{G_0}{v}},\\
+	\ev{G_0}{v}
+		&= \frac{2m}{\hbar^2} \int \dd[3]{\bm{q}} \frac{\abs{v(\bm{k}')}^2}{k^2 - q^2 + i\epsilon}.\\
+	T(\bm{k}',\bm{k})
+		&= \frac{v(\bm{k}')v^*(\bm{k})}{1-\ev{G_0}{v}}.
+\end{align}
+
+\subsection{}\label{ssec: IIIb}
+
+The Fourier transform of a constant is a dirac delta function:
+\begin{align}
+	\mel*{\bm{r}'}{V}{\bm{r}}
+		&= g\int\dd[3]{\bm{k}'}\dd[3]{\bm{k}} \frac{e^{i\bm{k}'\cdot\bm{r}'}e^{-i\bm{k}\cdot\bm{r}}}{(2\pi)^3},\\
+		&= (2\pi)^3 g \delta(\bm{r}) \delta(\bm{r}').
+\end{align}
+
+\subsection{}\label{ssec: IIIc}
+
+
+\begin{align}
+	T(0,0) = a
+		&= \frac{g}{1-\ev{G_0}{v}},\\
+	g
+		&= a(1-\ev{G_0}{v}),\\
+		&= a\left(1 - \frac{2m}{\hbar^2}g \int_0^\Lambda \dd[3]{\bm{q}} \frac{1}{- q^2 + i\epsilon}\right),\\
+		&= a\left(1 - \frac{8\pi m g}{\hbar^2}\Lambda\right),\\
+	g(\Lambda)
+		&= \frac{a}{1-\frac{8\pi m a \Lambda}{\hbar^2}}.
+\end{align}
+
+
+\subsection{}\label{ssec: IIId}
+
+
+\begin{align}
+	\dv{\Lambda} \frac{1}{T(\bm{k}',\bm{k})}
+		&= -\frac{8\pi m}{\hbar^2} + \frac{8\pi m}{\hbar^2} \dv{\Lambda}\int_{0}^{\Lambda} \frac{q^2\dd{q}}{q^2-k^2},\\
+		&= \frac{8\pi m}{\hbar^2} \frac{k^2}{\Lambda^2-k^2}.
+\end{align}
+For $k\ll\Lambda$, this expression goes to zero.
+
+
+% \printbib
+\stopmcols
+
+\end{document}
